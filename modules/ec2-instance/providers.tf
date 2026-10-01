@@ -1,8 +1,11 @@
-provider "aws" {
-    alias = "ap-south-1"
-    region = "ap-south-1"
-}
-provider "aws" {
-    alias = "ap-south-2"
-    region = "ap-south-2"
+# Now it only *declares* that it needs an "aws" provider handed to it, under the local
+# alias "ec2". The root module supplies the actual, region-configured provider via the
+# `providers = { aws = aws.primary }` (or aws.secondary) map on each module call.
+terraform {
+  required_providers {
+    aws = {
+      source                = "hashicorp/aws"
+      configuration_aliases = [aws.ec2]
+    }
+  }
 }
