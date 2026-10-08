@@ -1,6 +1,5 @@
-# Now it only *declares* that it needs an "aws" provider handed to it, under the local
-# alias "ec2". The root module supplies the actual, region-configured provider via the
-# `providers = { aws = aws.primary }` (or aws.secondary) map on each module call.
+# Declares a provider "slot" named aws.ec2 — the caller fills it via
+# providers = { aws.ec2 = aws.<some-alias> } on the module block.
 terraform {
   required_providers {
     aws = {

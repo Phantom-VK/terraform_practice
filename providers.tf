@@ -1,8 +1,8 @@
 provider "aws" {
-    alias = "primary"
-    region = "ap-south-1"
+  alias  = "web"
+  region = "ap-south-1"
 }
 provider "aws" {
-    alias = "secondary"
-    region = "ap-south-2"
+  alias  = "app"
+  region = "ap-south-1" # must match web's region — required for SG-referencing and the placement group
 }
